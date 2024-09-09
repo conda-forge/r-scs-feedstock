@@ -24,7 +24,7 @@ requirements:
     - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ stdlib("m2w64_c") }}      # [win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - binutils                     # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
