@@ -1,0 +1,21 @@
+From 5674b54a9a26fe2c0753f52d710f070993dd7a6e Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <mervin.fansler@bric.ku.dk>
+Date: Tue, 22 Oct 2024 10:08:11 +0200
+Subject: [PATCH] use env ranlib
+
+---
+ src/scs/scs.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/scs/scs.mk b/src/scs/scs.mk
+index f62f8e2..87fa36e 100644
+--- a/src/scs/scs.mk
++++ b/src/scs/scs.mk
+@@ -76,7 +76,6 @@ EXTSRC = $(LINSYS)/external
+ OUT = out
+ ARFLAGS = rv
+ ARCHIVE = $(AR) $(ARFLAGS)
+-RANLIB = ranlib
+ INSTALL = install
+ 
+ ifeq ($(PREFIX),)

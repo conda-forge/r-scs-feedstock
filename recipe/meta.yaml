@@ -1,6 +1,5 @@
 {% set version = "3.2.4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-scs
@@ -11,33 +10,35 @@ source:
     - {{ cran_mirror }}/src/contrib/scs_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/scs/scs_{{ version }}.tar.gz
   sha256: c3f39874bf4532fa8c2f2e2c41533ba4fe20b61cf6dfc6314407dc981621298f
+  patches:
+    - patches/0001-use-env-ar.patch
+    - patches/0002-use-env-ranlib.patch
 
 build:
-  merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - libblas
     - liblapack
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
-    - libblas
-    - liblapack
 
 test:
   commands:
