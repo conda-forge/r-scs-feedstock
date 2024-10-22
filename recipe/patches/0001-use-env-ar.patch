@@ -1,0 +1,21 @@
+From 15e75765e41d31eb9299c11b06762882a5d7d531 Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <mervin.fansler@bric.ku.dk>
+Date: Tue, 22 Oct 2024 09:35:40 +0200
+Subject: [PATCH] use env ar
+
+---
+ src/scs/scs.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/scs/scs.mk b/src/scs/scs.mk
+index 11ebd59..f62f8e2 100644
+--- a/src/scs/scs.mk
++++ b/src/scs/scs.mk
+@@ -74,7 +74,6 @@ MKLSRC = $(LINSYS)/mkl/direct
+ EXTSRC = $(LINSYS)/external
+ 
+ OUT = out
+-AR = ar
+ ARFLAGS = rv
+ ARCHIVE = $(AR) $(ARFLAGS)
+ RANLIB = ranlib
