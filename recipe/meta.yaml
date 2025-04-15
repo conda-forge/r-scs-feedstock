@@ -1,4 +1,4 @@
-{% set version = "3.2.4" %}
+{% set version = "3.2.7" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,13 +9,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/scs_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/scs/scs_{{ version }}.tar.gz
-  sha256: c3f39874bf4532fa8c2f2e2c41533ba4fe20b61cf6dfc6314407dc981621298f
+  sha256: f84004f95365f713e22e78b9c5a0a05670f5c5d17640b3dfa6e7ed747479aaca
   patches:
     - patches/0001-use-env-ar.patch
     - patches/0002-use-env-ranlib.patch
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -48,8 +48,8 @@ test:
 about:
   home: https://github.com/FlorianSchwendinger/scs
   license: GPL-3.0-only
-  summary: "Solves convex cone programs via operator splitting. Can solve: linear programs ('LPs'), second-order cone programs ('SOCPs'), semidefinite programs ('SDPs'), exponential cone programs ('ECPs'), and power cone programs ('PCPs'), or problems with any combination of those cones. 'SCS' uses 'AMD' (a set of routines\
-    \ for permuting sparse matrices prior to factorization) and 'LDL' (a sparse 'LDL' factorization and solve package) from 'SuiteSparse' (<https://people.engr.tamu.edu/davis/suitesparse.html>)."
+  summary: "Solves convex cone programs via operator splitting. Can solve: linear programs ('LPs'), second-order cone programs ('SOCPs'), semidefinite programs ('SDPs'), exponential cone programs ('ECPs'), and power cone programs ('PCPs'), or problems with any combination of those cones. 'SCS' uses 'AMD' (a set of routines
+    for permuting sparse matrices prior to factorization) and 'LDL' (a sparse 'LDL' factorization and solve package) from 'SuiteSparse' (<https://people.engr.tamu.edu/davis/suitesparse.html>)."
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
